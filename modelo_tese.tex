@@ -1,0 +1,288 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{enumitem}
+\usepackage[absolute]{textpos}
+\usepackage{tocloft}
+\usepackage[defaultlines=1]{nowidow}
+\usepackage{etoolbox}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[figurename=Fig., tablename=Tab.]{caption}
+\usepackage{tablefootnote}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage{indentfirst}
+\usepackage{pdfpages}
+\usepackage{amsmath}
+\usepackage{hhline}
+\usepackage{float}
+\usepackage{xpatch}
+\usepackage[hang,flushmargin]{footmisc}
+\usepackage{scrextend}
+\usepackage{chngcntr}
+\usepackage{graphicx}
+\usepackage[
+includeheadfoot, headsep=1cm,top=2cm, bottom=2cm, outer=2.5cm, inner=2.5cm, headsep=14pt]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage[brazil,english]{babel}
+\usepackage{csquotes}
+\usepackage[style=abnt, backend=biber]{biblatex}
+\usepackage{lipsum}
+\usepackage[unicode]{hyperref}
+% \usepackage{quoting}
+% \quotingsetup{
+%   leftmargin=4cm,      % Standard ABNT indent
+%   rightmargin=0cm,     % No indent on the right
+%   fontsize=\footnotesize, % Smaller font size
+%   setspace=1          % Set line spacing to single (requires setspace package)
+%   % vskip=0.5\baselineskip % Optional: Add some extra vertical space before/after
+% }
+
+\addbibresource{modelo_tese.bib}
+
+\fussy
+\tolerance=2000
+\emergencystretch=0em
+
+\setlength{\footnotemargin}{4mm}
+\setlength{\footnotesep}{3mm}
+\addtolength{\footskip}{6mm}
+
+\setmainfont{Noto Serif}
+\setsansfont{Mulish}
+\setmonofont{Roboto Mono}
+
+\definecolor{bgray}{gray}{0.15}
+\definecolor{dgray}{gray}{0.25}
+\definecolor{lgray}{gray}{0.85}
+\definecolor{zgray}{gray}{0.5}
+
+\definecolor{captioncolor}{gray}{0.3}
+\definecolor{light-gray}{gray}{0.9}
+\definecolor{electricyellow}{rgb}{1.0, 1.0, 0.0}
+
+\definecolor{linkcolor}{rgb}{0.2,0.2,0.2}
+
+\counterwithout{table}{chapter}
+\captionsetup[figure]{font={footnotesize, sf,color=linkcolor},labelfont=bf,labelsep=endash,margin=1cm,justification=centering}
+
+\titleformat{\chapter}
+{\vspace{2pt}\large\bfseries}
+{\thechapter. }
+{10pt}
+{ }
+\titlespacing*{\chapter} {0cm}{0.2cm}{4pt}
+
+\titleformat{\section}
+{\vspace{2pt}\bfseries}
+{\thesection. }
+{0pt}
+{ }
+\titlespacing*{\section} {0cm}{0pt}{0pt}
+
+\renewcommand{\thesubsection}{\alph{subsection})}
+\titleformat{\subsection}
+{\vspace{2pt}\bfseries}
+{\thesubsection }
+{0pt}
+{ }
+\titlespacing*{\subsection} {0cm}{0pt}{0pt}
+
+\renewcommand{\thesubsubsection}{-- }
+\titleformat{\subsubsection}
+{\vspace{2pt}\underline}
+{\thesubsubsection }
+{0pt}
+{ }
+\titlespacing*{\subsubsection} {0cm}{0pt}{0pt}
+
+\newcommand{\legenda}[1]{
+{
+\begin{addmargin}[1cm]{1cm}
+\centering
+\setstretch{1}
+  \footnotesize
+{\color{captioncolor} #1}
+\end{addmargin}
+\par
+\vskip 12pt
+}
+}
+
+\newcommand{\imagem}[1]{
+{
+\centering
+#1
+\par}
+\vspace{6pt}
+}
+
+\newcommand{\longquote}[1]{
+{
+\vspace{12pt}
+\setstretch{0.8}
+\begin{addmargin}[4cm]{0em}
+  {
+  \spaceskip=1.2\fontdimen2\font plus 1.2\fontdimen3\font
+   minus 1.7\fontdimen4\font
+  {\small #1}
+  }
+\vspace{24pt}
+\end{addmargin}
+}
+}
+
+\hypersetup{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfcreator={LaTeX},
+    colorlinks=true,
+    linkcolor=linkcolor,
+    citecolor=linkcolor,
+    filecolor=linkcolor,
+    urlcolor=linkcolor}
+
+\hyphenpenalty=1000
+\tolerance=10000
+
+\title{
+{Thesis Title}\\
+{\large Institution Name}
+}
+
+\author{Author Name}
+
+\date{Day Month Year}
+
+\makeindex
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{center}
+  {\large UNIVERSITY\\
+  Institute \\
+  Department\\}
+  
+  \vspace{4cm}
+  
+  {\large Your name}
+  
+  \vspace{4cm}  
+  
+  {\Large \textbf{Title of the thesis/dissertation} }
+  
+  \vfill
+  {\large City \\ \vspace{0.5cm} 
+  Date }
+  \end{center}
+
+\newpage
+\clearpage
+\pagenumbering{gobble}
+{\tableofcontents}
+
+\newpage
+\pagestyle{plain}
+\setcounter{page}{1} \pagenumbering{arabic}
+
+\setlength\parindent{1.5cm}
+\setlength{\parskip}{2pt}
+
+\chapter*{Introduction}
+\label{chap:intro}
+\addcontentsline{toc}{chapter}{Introduction}
+
+\begin{spacing}{1.5}
+
+\lipsum[1]
+
+\chapter{First chapter title}
+\label{chap:one}
+
+\lipsum[1-7]
+
+\chapter{Second chapter title}
+\label{chap:two}
+
+\lipsum[8-12]
+
+\section{Section of bibliographic revision}
+\label{section:revbib}
+
+Some ways to cite:
+
+According to... bla bla bla \cite{Doe2020}. With page: \cite[p.~1]{Doe2020}. With page range: \cite[p.~1-2]{Doe2020}.
+
+Many authors in the same citation. Bla Bla Bla. \cite{Doe2020,Brown2023report,Doe2021masters,ExampleOrg2023,Jones2019,JonesUnpublished2020,Miller2024phd,Smith2022proc,SmithTeam2021}.
+
+If need to cite only the year. \citeyear{Doe2020}.
+
+If need to city the title and the date of some text. \citetitle{Doe2020}.
+
+Inline cite is useful when referencing an author as a subject in the middle of a sentence. \textcite{Doe2020} says something really interesting.
+
+Full bibliographic reference (useful in reports, for instance)
+
+\noindent\fullcite{Doe2020}
+
+\longquote{
+This is an example of a quote. It can span multiple lines and is formatted to stand out from the main text. \lipsum[20]. bla blabla. \cite[p.~20]{Doe2023}
+}
+
+\lipsum[13-15]
+
+\subsection{Subsection}
+\label{subsec:a}
+
+\lipsum[16-17]
+
+\begin{figure}[H]
+  \vskip 12pt
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/dummy_image.png}
+  \caption{Some caption}
+  \label{figure:figlabel}
+\end{figure}
+
+To refer to a figure or section use Fig.~\ref{figure:figlabel} or Section~\ref{section:revbib}.
+The caption text is: \nameref{figure:figlabel}.
+
+\chapter{Third chapter title}
+\label{chap:three}
+\lipsum[18-20]
+\section{Another section}
+\label{section:another}
+\lipsum[21-22]
+
+\chapter{Fourth chapter title}
+\label{chap:four}
+\lipsum[23-25]
+\section{Another section}
+\label{section:another2}
+\lipsum[26-27]
+
+\chapter*{Conclusion}
+\label{chap:conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+\lipsum[28-30]
+\section*{Acknowledgments}
+\label{sec:acknowledgments}
+\addcontentsline{toc}{section}{Acknowledgments}
+\lipsum[31-32]
+
+\end{spacing}
+
+\renewcommand*{\bibfont}{\sffamily\small}
+
+\begingroup
+\setstretch{1.0}
+\setlength\bibitemsep{6pt plus 2pt minus 2pt}
+\printbibliography[heading=bibintoc,title={References}]
+\endgroup
+
+\end{document}

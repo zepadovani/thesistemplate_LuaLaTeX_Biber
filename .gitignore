@@ -1,0 +1,25 @@
+# LaTeX auxiliary files
+
+.vscode/
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.pdfsync
+*.synctex*
+*.toc
+*.biber_cache
+*.run.xml
+*.blx
+*.cbx
+*.lbx
+*.sty.bak
+*.cls.bak
+*.tex.bak
