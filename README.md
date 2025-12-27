@@ -7,108 +7,136 @@ Compile using: `lualatex` + `biber` + `lualatex` + `lualatex`.
 2. Edit User Config JSON (Ctrl+Shift+P), and configure the recipes and set the one that compiles automatically on every save.
 
 ```[json]
-    "latex-workshop.latex.clean.fileTypes": [
-      "%DOCFILE%.aux",
-      "%DOCFILE%.bbl",
-      "%DOCFILE%.blg",
-      "%DOCFILE%.idx",
-      "%DOCFILE%.ind",
-      "%DOCFILE%.lof",
-      "%DOCFILE%.lot",
-      "%DOCFILE%.out",
-      "%DOCFILE%.toc",
-      "%DOCFILE%.acn",
-      "%DOCFILE%.acr",
-      "%DOCFILE%.alg",
-      "%DOCFILE%.glg",
-      "%DOCFILE%.glo",
-      "%DOCFILE%.gls",
-      "%DOCFILE%.fls",
-      "%DOCFILE%.log",
-      "%DOCFILE%.fdb_latexmk",
-      "%DOCFILE%.snm",
-      "%DOCFILE%.synctex(busy)",
-      "%DOCFILE%.synctex.gz(busy)",
-      "%DOCFILE%.nav",
-      "%DOCFILE%.vrb",
-      "%DOCFILE%.synctex.gz"
-    ],
-    "[latex]": {
-      "editor.formatOnPaste": false,
-      "editor.suggestSelection": "recentlyUsedByPrefix"
+   "latex-workshop.latex.clean.fileTypes": [
+    "%DOCFILE%.aux",
+    "%DOCFILE%.bbl",
+    "%DOCFILE%.blg",
+    "%DOCFILE%.idx",
+    "%DOCFILE%.ind",
+    "%DOCFILE%.lof",
+    "%DOCFILE%.lot",
+    "%DOCFILE%.out",
+    "%DOCFILE%.toc",
+    "%DOCFILE%.acn",
+    "%DOCFILE%.acr",
+    "%DOCFILE%.alg",
+    "%DOCFILE%.glg",
+    "%DOCFILE%.glo",
+    "%DOCFILE%.gls",
+    "%DOCFILE%.fls",
+    "%DOCFILE%.log",
+    "%DOCFILE%.fdb_latexmk",
+    "%DOCFILE%.snm",
+    "%DOCFILE%.synctex(busy)",
+    "%DOCFILE%.synctex.gz(busy)",
+    "%DOCFILE%.nav",
+    "%DOCFILE%.vrb",
+    "%DOCFILE%.synctex.gz"
+  ],
+  "[latex]": {
+    "editor.formatOnPaste": false,
+    "editor.suggestSelection": "recentlyUsedByPrefix"
+  },
+  "latex-workshop.latex.tools": [
+    {
+      "name": "lualatex",
+      "command": "lualatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
     },
-    "latex-workshop.latex.tools": [
-      {
-        "name": "lualatex",
-        "command": "lualatex",
-        "args": [
-          "-synctex=1",
-          "-interaction=nonstopmode",
-          "-file-line-error",
-          "%DOC%"
-        ]
-      },
-      {
-        "name": "bibtex",
-        "command": "bibtex",
-        "args": [
-          "%DOC%"
-        ]
-      },
-      {
-        "name": "biber",
-        "command": "biber",
-        "args": [
-          "%DOCFILE%"
-        ]
-      }
-    ],
-    "latex-workshop.latex.recipes": [
-    
-      {
-        "name": "LuaLaTeX",
-        "tools": [
-          "lualatex",
-        ]
-      },     
-      {
-        "name": "LuaLaTeX + Biber",
-        "tools": [
-          "lualatex",
-          "biber",
-          "lualatex",
-          "lualatex"
-        ]
-      },
-      {
-        "name": "LuaLaTeX + BibTeX + LuaLaTeX x2",
-        "tools": [
-          "lualatex",
-          "bibtex",
-          "lualatex",
-          "lualatex"
-        ]
-      },
-      {
-        "name": "LuaLaTeX",
-        "tools": [
-          "lualatex"
-        ]
-      },
-      {
-        "name": "BibTeX",
-        "tools": [
-          "bibtex"
-        ]
-      },
-      {
-        "name": "Biber",
-        "tools": [
-          "biber"
-        ]
-      }
-    ],
-    "latex-workshop.latex.recipe.default":"LuaLaTeX + BibTeX + LuaLaTeX x2",
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": [
+        "%DOCFILE%"
+      ]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": [
+        "%DOCFILE%"
+      ]
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "LuaLaTeX",
+      "tools": [
+        "lualatex"
+      ]
+    },
+    {
+      "name": "LuaLaTeX + Biber + LuaLaTeX x2",
+      "tools": [
+        "lualatex",
+        "biber",
+        "lualatex",
+        "lualatex"
+      ]
+    },
+    {
+      "name": "LuaLaTeX + BibTeX + LuaLaTeX x2",
+      "tools": [
+        "lualatex",
+        "bibtex",
+        "lualatex",
+        "lualatex"
+      ]
+    },
+    {
+      "name": "LuaLaTeX",
+      "tools": [
+        "lualatex"
+      ]
+    },
+    {
+      "name": "BibTeX",
+      "tools": [
+        "bibtex"
+      ]
+    },
+    {
+      "name": "Biber",
+      "tools": [
+        "biber"
+      ]
+    },
+    {
+      "name": "pdfLaTeX + BibTeX + pdfLaTeX x2",
+      "tools": [
+        "pdflatex",
+        "bibtex",
+        "pdflatex",
+        "pdflatex"
+      ]
+    },
+    {
+      "name": "pdfLaTeX + Biber + pdfLaTeX x2",
+      "tools": [
+        "pdflatex",
+        "biber",
+        "pdflatex",
+        "pdflatex"
+      ]
+    },
+
+  ],
+    "latex-workshop.latex.recipe.default":"LuaLaTeX + Biber + LuaLaTeX x2",
     "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
     "latex-workshop.formatting.latex": "tex-fmt",
 ```
